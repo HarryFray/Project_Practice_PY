@@ -1,19 +1,12 @@
 ''' To start code assumes no leap year and each month is 30 days long '''
 
 def nextDay(year, month, day):
-    newday = day + 1
-    if newday > 30:
-        newday = 1
-        newmonth = month + 1
-        newyear = year
-        if newmonth > 12:
-            newday = 1
-            newmonth = 1
-            newyear = year + 1
+    if day < 30:
+        return year,month,day + 1
     else:
-        newmonth = month
-        newyear = year
+        if month == 12:
+            return year + 1,1,1
+        else:
+            return year,month + 1,1
 
-    return newyear, newmonth, newday
-
-print nextDay(2017, 5, 30)
+print nextDay(2017, 12, 30)
