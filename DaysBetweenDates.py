@@ -11,6 +11,8 @@ def nextDay(year, month, day):
         else:
             return year,month + 1,1
 
+
+
 ''' givin two dates returns true if first date occures before second '''
 def DateIsBefore(year1, month1, day1, year2, month2, day2):
     if year1 < year2:
@@ -27,12 +29,14 @@ def DateIsBefore(year1, month1, day1, year2, month2, day2):
 ''' givin two dates returns days between them '''
 def DaysBetweenDates(year1, month1, day1, year2, month2, day2):
     days = 0
+    assert (DateIsBefore(year1, month1, day1, year2, month2, day2))
     while DateIsBefore(year1, month1, day1, year2, month2, day2):
-        year1,month1,day1 = nextDay(year1, month1, day1)
-        days += days
+        year1, month1, day1 = nextDay(year1, month1, day1)
+        days += 1
     return days
 
-print DaysBetweenDates(1991,5,30,2017,11,7)
+
+print DaysBetweenDates(201,5,30,2017,11,7)
 
 
 
