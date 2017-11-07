@@ -9,12 +9,23 @@ def PigLatin(string):
     PigString = ''
     for word in list:
         FirstLetter = word[0]
-        for vowel in 'aeiou':
-            if FirstLetter == vowel:
-                PigString += word + 'yay '
+        for vowel in 'aeiouAEIOU':
+            if vowel == FirstLetter:
+             PigString += word + 'yay '
+
+        for con in 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ':
+            if con == FirstLetter:
+                vowelplace = []
+                for vowel in 'aeiouAEIOU':
+                    if word.find(vowel) == -1:
+                        pass
+                    else:
+                        place = word.find(vowel)
+                        vowelplace.append(place)
+                        FirstVowelLocation = min(vowelplace)
+                PigString += word[FirstVowelLocation:] + word[:FirstVowelLocation] + ' '
     print PigString
 
-
-
-
-PigLatin('bite apple julia is real smart sometimes lol octagon')
+Rinput = raw_input('English to Pig Latin:')
+print Rinput
+PigLatin(Rinput)
