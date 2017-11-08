@@ -1,16 +1,31 @@
 ''' To start code assumes no leap year and each month is 30 days long '''
 
+''' adds one day to original date
+input: day,month
+output: day,month '''
 
-''' givin a date adds one day to that date '''
-def nextDay(year, month, day):
-    if day < 30:
-        return year,month,day + 1
+def DaysMonths(month,day):
+    DaysInEachMonth = {'1':31,'2':28,'3':31,'4':30,'5':31,'6':30,
+                       '7':31,'8':31,'9':30,'10':31,'11':30,'12':31}
+    assert not day > DaysInEachMonth[str(month)]
+
+    MonthLength = DaysInEachMonth[str(month)]
+    if day < MonthLength:
+        day += 1
+        return month, day
     else:
-        if month == 12:
-            return year + 1,1,1
-        else:
-            return year,month + 1,1
+        month += 1
+        day = 1
+        return month, day
 
+
+''' givin a date adds one day to that date accounting for change in year '''
+def nextDay(year, month, day):
+    month,day = DaysMonths(month,day)
+    if month == 13:
+         return year + 1,1,1
+    else:
+        return year,month,day
 
 
 ''' givin two dates returns true if first date occures before second '''
@@ -36,7 +51,8 @@ def DaysBetweenDates(year1, month1, day1, year2, month2, day2):
     return days
 
 
-print DaysBetweenDates(201,5,30,2017,11,7)
+print DaysBetweenDates(1991,5,28,2017,11,7)
+
 
 
 
