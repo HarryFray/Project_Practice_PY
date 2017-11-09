@@ -11,6 +11,7 @@ def PigLatin(string):
     PigString = ''
     for word in list:
         FirstLetter = word[0]
+        ''' use (not in) here!!!! can shorten code a lot '''
         for vowel in 'aeiouAEIOU':
             if vowel == FirstLetter:
              PigString += word + 'yay '
