@@ -14,18 +14,14 @@ def LeapYear(year):
     else:
         return True
 
-''' accounts for monthes different day values '''
-
+''' calls leap year and increments by one day accounting for monthes 
+ respective lengths in days'''
 def DaysMonths(year,month,day):
-    DaysInEachMonth = {'1':31,'2':28,'3':31,'4':30,'5':31,'6':30,
-                       '7':31,'8':31,'9':30,'10':31,'11':30,'12':31}
-
+    DaysInEachMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
     leap = LeapYear(year)
-    if LeapYear(year) : DaysInEachMonth['2'] = 29
-
-    assert not day > DaysInEachMonth[str(month)]
-
-    MonthLength = DaysInEachMonth[str(month)]
+    if LeapYear(year) : DaysInEachMonth[2-1] = 29
+    assert not day > DaysInEachMonth[month-1]
+    MonthLength = DaysInEachMonth[month-1]
     if day < MonthLength:
         day += 1
         return year, month, day
@@ -34,8 +30,7 @@ def DaysMonths(year,month,day):
         day = 1
         return year, month, day
 
-
-''' givin a date adds one day to that date accounting for change in year '''
+''' givin a date calls day months adding incrimenting year if required '''
 def nextDay(year, month, day):
     year,month,day = DaysMonths(year,month,day)
     if month > 12:
@@ -69,8 +64,11 @@ def DaysBetweenDates(year1, month1, day1, year2, month2, day2):
 ''' used to calculate years '''
 yeardays = 365.2422
 ''' test cases '''
-print DaysBetweenDates(1991,5,30,2017,11,28)/yeardays
+assert DaysBetweenDates(1991,5,30,2017,11,28)
 assert DaysMonths(2000,5,31)
 assert nextDay(2000,12,31)
 assert DateIsBefore(2000,5,5,2001,5,5)
+assert not DateIsBefore(2000,5,5,1999,5,5)
+
+
 

@@ -5,28 +5,26 @@ If it begins with a consonant, then we take all consonants
 before the first vowel and we put them on the end of the word.
 '''
 
-''' way to consolidate some of these 4 loops?'''
+
 def PigLatin(string):
     list = string.split()
     PigString = ''
     for word in list:
         FirstLetter = word[0]
-        ''' use (not in) here!!!! can shorten code a lot '''
-        for vowel in 'aeiouAEIOU':
-            if vowel == FirstLetter:
+        vowels = 'aeiouAEIOU'
+        if FirstLetter in vowels:
              PigString += word + 'yay '
-
-        for con in 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ':
-            if con == FirstLetter:
-                vowelplace = []
-                for vowel in 'aeiouAEIOU':
-                    if word.find(vowel) == -1:
-                        pass
-                    else:
-                        place = word.find(vowel)
-                        vowelplace.append(place)
-                        FirstVowelLocation = min(vowelplace)
-                PigString += word[FirstVowelLocation:] + word[:FirstVowelLocation] + ' '
+        else:
+            ''' use (not in) or (in) here to simplify code '''
+            vowelplace = []
+            for vowel in vowels:
+                if word.find(vowel) == -1:pass
+                    # FirstVowelLocation = [0]
+                else:
+                     place = word.find(vowel)
+                     vowelplace.append(place)
+                     FirstVowelLocation = min(vowelplace)
+            PigString += word[FirstVowelLocation:] + word[:FirstVowelLocation] + ' '
     print PigString
 
 Rinput = raw_input('English to Pig Latin:')
