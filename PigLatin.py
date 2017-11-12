@@ -5,7 +5,7 @@ If it begins with a consonant, then we take all consonants
 before the first vowel and we put them on the end of the word.
 '''
 
-
+''' works but could it be optimized'''
 def PigLatin(string):
     list = string.split()
     PigString = ''
