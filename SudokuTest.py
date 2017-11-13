@@ -1,11 +1,10 @@
-''' '''
+''' still passing incorrect list between functions
+ research pass by reference vs pass by value'''
 
 ''' checks sudoku or should be and just using or here as a test '''
 def check_sudoku(squarelist):
-    if check_row(squarelist) and check_col(squarelist):
-        return True
-    else:
-        return False
+    truelist = squarelist
+    return check_row(truelist) and check_col(truelist)
 
 '''checks rows for duplicates'''
 def check_row(squarelist):
@@ -41,8 +40,10 @@ incorrect = [[1, 2, 3, 4],
              [2, 3, 1, 4],
              [3, 1, 2, 2],
              [4, 4, 4, 4]]
-#check_sudoku(incorrect)
+
+
 print check_row(incorrect)
+print check_sudoku(incorrect)
 print check_col(incorrect)
 
 incorrect2 = [[1, 2, 3, 4],
