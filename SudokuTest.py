@@ -7,7 +7,7 @@ variable truelist'''
 ''' checks sudoku or should be and just using or here as a test '''
 def check_sudoku(squarelist):
     truelist = squarelist
-    return check_col(truelist) and check_row(truelist)
+    return check_col(truelist) and check_row(truelist) and check_square(truelist)
 
 '''checks rows for duplicates'''
 def check_row(squarelist):
@@ -28,6 +28,16 @@ def check_col(squarelist):
             if num in listcol or num > len(squarelist) or type(num) != int:
                 return False
     return True
+
+''' checks subsquares for a 9x9 matrix
+real Sudoku situation'''
+def check_square(squarelist):
+    if len(squarelist) != 9:
+        return True
+    else:
+        pass
+
+
 
 
 
