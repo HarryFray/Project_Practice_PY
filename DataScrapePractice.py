@@ -1,33 +1,34 @@
-from bs4 import BeautifulSoup
-import requests
+''' study
+json
+url structure
+dictionarys
+'''
 
-
-# APIkey = 2a016a417daf4448aca7554281008a52
-url = 'https://en.wikipedia.org/wiki/Gu%C3%A9ridon'
-''' gets content'''
-x = requests.get(url)
-
-
-'''beatifulsoup makes the content pulled usable '''
-soup = BeautifulSoup(x.content,'html.parser')
-
-
-''' study documentation of requests '''
-links = soup.find_all("a")
-for link in links:
-    print link.get('href')
-
-'''returns all text'''
+import urllib2
+import json
 
 
 
+''' expand knowledge of urls here what does & or ? do'''
+url = ('https://newsapi.org/v2/everything?'
+        'sources=abc-news&'
+      # 'q=Kitten&'
+       #'from=2017-11-20&'
+     #  'sortBy=popularity&'
+       'apiKey=2a016a417daf4448aca7554281008a52')
 
 
+''' opens specified url from api so in json format '''
+json_obj = urllib2.urlopen(url)
+
+''' loads jason object'''
+data = json.load(json_obj)
 
 
-
-
-
+for item in data['articles']:
+   # print data
+    #if 'Rancho' in item['title']:
+    print item['title']
 
 
 
